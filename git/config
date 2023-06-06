@@ -35,3 +35,5 @@
 	c		= commit
 	ca		= commit -a
 	s		= status
+	cb		= checkout -b
+	bl		= branch -l
