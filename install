@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+echo "configuring dotfiles..."
+BASEDIR=$(dirname $0)
+cd $BASEDIR
+
+declare -a links_made
+declare -a links_not_made
+
+# this is a work in progress, will test before deployment
+if ! [ -L ~/.bash_aliases ]; then
+	ln -s ${PWD}/aliases ~/.bash_aliases
+	links_made+=(".bash_aliases")
+else
+	links_not_made+=(".bash_aliases")
+fi
+
+if ! [ -f ~/.bashrc ]; then
+	ln -s ${PWD}/bashrc ~/.bashrc
+	links_made+=(".bashrc")
+else
+	links_not_made+=(".bashrc")
+fi
+
+if ! [ -f ~/.tmux.conf ]; then
+	ln -s ${PWD}/tmux.conf ~/.tmux.conf
+	links_made+=(".tmux.conf")
+else
+	links_not_made+=(".tmux.conf")
+fi
+
+for file in ${links_made[@]}; do
+	printf 'Successfully created %s.\n' $file
+done
+
+for file in ${links_not_made[@]}; do
+	printf 'Error: [File exists already] %s\n' $file
+done

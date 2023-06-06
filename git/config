@@ -1,0 +1,37 @@
+[user]
+	name 		= Justin Cromer
+	email 		= justincromer@protonmail.com
+[credential "https://github.com"]
+	username 	= avg-cs-student
+[init]
+	defaultBranch 	= master
+[core]
+	editor		= nvim
+	pager		= less
+[web]
+	browser		= firefox
+[color "branch"]
+	current 	= yellow	bold
+	local		= green 	bold
+	remote 		= cyan 		bold
+[color "diff"]
+	meta		= yellow	bold
+	frag		= magenta	bold
+	old		= red		bold
+	new		= green		bold
+	whitespace	= red		reverse
+[color "status"]
+	added		= green		bold
+	changed		= yellow	bold
+	untracked	= red		bold
+[diff]
+	tool		= vimdiff
+[difftool]
+	prompt		= false
+[merge]
+	tool 		= nvim -d
+[alias]
+	hist		= log --all --graph --decorate --oneline
+	c		= commit
+	ca		= commit -a
+	s		= status

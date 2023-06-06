@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# pipe to system clipboard for ctrl-v use
+alias xsc='xclip -selection c'
+
+# avoid bad things while learning kenesis keyboard
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
+# most frequently used
+alias l='ls'
+alias la='ls -A'
+alias ll='ls -lah'
+alias df='df -h'
+alias mkdir='mkdir -p'
+alias bat='batcat'
+alias cat='batcat --paging=never'
+
+# use neovim if we can
+if command -v nvim &> /dev/null; then
+	alias v='nvim'
+	alias vi='nvim'
+fi
+
+
+# custom default fzf settings
+export FZF_DEFAULT_OPTS="--no-mouse --height 40% --layout=reverse --border --multi --preview='batcat --color=always --style=numbers --line-range=:500 {}'"
+
+
+# mkdir && cd to that dir
+mcd () {
+	mkdir -p $1 && cd $_
+}
+
+# jump to dir containing file, handy with fzf
+jump () {
+	cd "$(dirname ${1})"
+}

@@ -1,0 +1,47 @@
+# Compiled
+# --------
+*.class
+*.dll
+*.exe
+*.out
+*.app
+*.o
+*.so
+*.gch
+*.pch
+*.dylib
+*.a
+*.obj
+
+# Debug
+# -----
+*.dSYM
+
+# Temp
+# ----
+*.swp
+*.swo
+*~
+
+# Pkg
+# ---
+*.7z
+*.dmg
+*.gz
+*.zip
+*.jar
+*.iso
+*.rar
+*.tar
+
+# Logs
+# ----
+*.log
+
+# Mac Garbage
+# -----------
+*.DS_Store*
+
+# In case someone makes me use VSCode against my will
+# ---------------------------------------------------
+.vscode
