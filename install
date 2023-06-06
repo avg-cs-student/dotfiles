@@ -7,11 +7,25 @@ declare -a links_made
 declare -a links_not_made
 
 # this is a work in progress, will test before deployment
-if ! [ -L ~/.bash_aliases ]; then
+if ! [ -f ~/.bash_aliases ]; then
 	ln -s ${PWD}/aliases ~/.bash_aliases
 	links_made+=(".bash_aliases")
 else
 	links_not_made+=(".bash_aliases")
+fi
+
+if ! [ -f ~/.config/git/config ]; then
+	ln -s ${PWD}/git/config ~/.config/git/config
+	links_made+=(".config/git/config")
+else
+	links_not_made+=(".config/git/config")
+fi
+
+if ! [ -f ~/.config/git/ignore ]; then
+	ln -s ${PWD}/git/ignore ~/.config/git/ignore
+	links_made+=(".config/git/ignore")
+else
+	links_not_made+=(".config/git/ignore")
 fi
 
 if ! [ -f ~/.bashrc ]; then
