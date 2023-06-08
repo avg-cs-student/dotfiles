@@ -1,51 +1,57 @@
 #!/usr/bin/env bash
-echo "configuring dotfiles..."
+
+echo "Checking for dependencies..."
+declare -a needed
+if ! command -v nvim &> /dev/null; then
+	needed+=("nvim")
+fi
+
+if ! command -v tmux &> /dev/null; then
+	needed+=("tmux")
+fi
+
+if ! command -v git &> /dev/null; then
+	needed+=("git")
+fi
+
+if [ ${#needed[@]} -ne 0 ]; then
+	echo "needed = ${#needed[@]}"
+	echo -e "\nBefore proceeding with this script, please install the following dependencies:"
+	for f in ${needed[@]}; do
+		echo "$f"
+	done
+	exit
+else
+	echo -e "\nFound all required dependencies!"
+fi
+
+echo -e "\nThe execution of this script will remove the following files/directories on "
+echo "your local system: "
+echo -e "\t.bashrc\n\t.bash_aliases\n\t.config/git/\n\t.tmux.conf\n\t.config/nvim/"
+echo -e "\nConfirm? [y/n]"
+read user_response
+if [ $user_response == 'n' ]; then
+	echo -e "\nScript cancelled."
+	exit
+else
+	echo -e "\nConfiguring symlinks"
+fi
+
 BASEDIR=$(dirname $0)
 cd $BASEDIR
 
-declare -a links_made
-declare -a links_not_made
-
-# this is a work in progress, will test before deployment
-if ! [ -f ~/.bash_aliases ]; then
-	ln -s ${PWD}/aliases ~/.bash_aliases
-	links_made+=(".bash_aliases")
-else
-	links_not_made+=(".bash_aliases")
+# Clean start
+if ! [ -d ~/.config ]; then
+	mkdir -v ~/.config
 fi
 
-if ! [ -f ~/.config/git/config ]; then
-	ln -s ${PWD}/git/config ~/.config/git/config
-	links_made+=(".config/git/config")
-else
-	links_not_made+=(".config/git/config")
-fi
+rm -vrf ~/.bash_aliases ~/.bashrc ~/.tmux.conf ~/.config/git ~/.config/nvim
 
-if ! [ -f ~/.config/git/ignore ]; then
-	ln -s ${PWD}/git/ignore ~/.config/git/ignore
-	links_made+=(".config/git/ignore")
-else
-	links_not_made+=(".config/git/ignore")
-fi
+# Files
+ln -s ${PWD}/aliases ~/.bash_aliases
+ln -s ${PWD}/bashrc ~/.bashrc
+ln -s ${PWD}/tmux.conf ~/.tmux.conf
 
-if ! [ -f ~/.bashrc ]; then
-	ln -s ${PWD}/bashrc ~/.bashrc
-	links_made+=(".bashrc")
-else
-	links_not_made+=(".bashrc")
-fi
-
-if ! [ -f ~/.tmux.conf ]; then
-	ln -s ${PWD}/tmux.conf ~/.tmux.conf
-	links_made+=(".tmux.conf")
-else
-	links_not_made+=(".tmux.conf")
-fi
-
-for file in ${links_made[@]}; do
-	printf 'Successfully created %s.\n' $file
-done
-
-for file in ${links_not_made[@]}; do
-	printf 'Error: [File exists already] %s\n' $file
-done
+# Directories
+ln -s -t ~/.config/ ${PWD}/git
+ln -s -t ~/.config/ ${PWD}/nvim
