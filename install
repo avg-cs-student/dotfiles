@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-echo "Checking for dependencies..."
+# Colors
+g="\e[32m"
+r="\e[31m"
+b="\e[1m"
+d="\e[39m\e[0m"
+
+echo -e "Checking for dependencies..."
 declare -a needed
 if ! command -v nvim &> /dev/null; then
 	needed+=("nvim")
@@ -15,14 +21,13 @@ if ! command -v git &> /dev/null; then
 fi
 
 if [ ${#needed[@]} -ne 0 ]; then
-	echo "needed = ${#needed[@]}"
 	echo -e "\nBefore proceeding with this script, please install the following dependencies:"
 	for f in ${needed[@]}; do
-		echo "$f"
+		echo -e "\t${r}$f${d}"
 	done
 	exit
 else
-	echo -e "\nFound all required dependencies!"
+	echo -e "\n${g}Found all required dependencies!${d}"
 fi
 
 echo -e "\nThe execution of this script will remove the following files/directories on "
@@ -30,11 +35,9 @@ echo "your local system: "
 echo -e "\t.bashrc\n\t.bash_aliases\n\t.config/git/\n\t.tmux.conf\n\t.config/nvim/"
 echo -e "\nConfirm? [y/n]"
 read user_response
-if [ $user_response == 'n' ]; then
-	echo -e "\nScript cancelled."
+if ! [ $user_response == 'y' ]; then
+	echo -e "\n${r}Script cancelled.${d}"
 	exit
-else
-	echo -e "\nConfiguring symlinks"
 fi
 
 BASEDIR=$(dirname $0)
@@ -45,13 +48,20 @@ if ! [ -d ~/.config ]; then
 	mkdir -v ~/.config
 fi
 
-rm -vrf ~/.bash_aliases ~/.bashrc ~/.tmux.conf ~/.config/git ~/.config/nvim
+echo -e "\nRemoving existing files/directories..."
+echo -e "--------------------------------------"
+rm -vrf ~/.bash_aliases ~/.bashrc ~/.tmux.conf ~/.config/git ~/.config/nvim ~/.config/gnu-readline.conf
+echo -e "\nConfiguring symlinks"
+echo -e "--------------------"
 
 # Files
-ln -s ${PWD}/aliases ~/.bash_aliases
-ln -s ${PWD}/bashrc ~/.bashrc
-ln -s ${PWD}/tmux.conf ~/.tmux.conf
+ln -sv ${PWD}/aliases ~/.bash_aliases
+ln -sv ${PWD}/bashrc ~/.bashrc
+ln -sv ${PWD}/tmux.conf ~/.tmux.conf
+ln -sv ${PWD}/gnu-readline.conf ~/.config/gnu-readline.conf
 
 # Directories
-ln -s -t ~/.config/ ${PWD}/git
-ln -s -t ~/.config/ ${PWD}/nvim
+ln -sv -t ~/.config/ ${PWD}/git
+ln -sv -t ~/.config/ ${PWD}/nvim
+
+echo -e "\n${g}Complete.${d}"

@@ -22,6 +22,7 @@ set autoindent
 set ignorecase smartcase
 set cb=unnamedplus	" integrates system clipboard with yank and put
 
+" The following lines customize the status bar at the bottom of the screen
 " https://shapeshed.com/vim-statuslines/
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")

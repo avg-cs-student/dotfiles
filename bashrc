@@ -19,6 +19,7 @@ COLOR_GRAY='\e[38;5;246m'
 
 # use vi navigation rather than emacs
 set -o vi
+EDITOR=nvim
 
 # add git to prompt
 parse_git_branch () {
@@ -37,9 +38,9 @@ __prompt_command () {
 	PS1+="${COLOR_RED}\$(parse_git_branch)\n"
 
 	if [ $EXIT -ne 0 ]; then 
-		PS1+="${COLOR_RED}!! ${COLOR_DEFAULT} "
+		PS1+="${COLOR_RED}! ${COLOR_DEFAULT}"
 	else
-		PS1+="${COLOR_BLUE}>> ${COLOR_DEFAULT} "
+		PS1+="${COLOR_BLUE}> ${COLOR_DEFAULT}"	
 	fi
 }
 #PS1="\n${COLOR_BLUE}\$${COLOR_DEFAULT} ${COLOR_CYAN}\\u${COLOR_DEFAULT} ${COLOR_GREEN}at${COLOR_DEFAULT} ${COLOR_MAGENTA}\$(hostname)${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_YELLOW}\w${COLOR_DEFAULT}\$(parse_git_branch)\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} "
