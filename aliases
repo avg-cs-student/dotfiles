@@ -53,3 +53,9 @@ mcd () {
 jump () {
 	cd "$(dirname ${1})"
 }
+
+# convert markdown to pdf quickly
+makepdf () {
+	local new_name=$(echo $1 | sed 's/.md$/.pdf/')
+	pandoc -t pdf -o $new_name $1
+}
