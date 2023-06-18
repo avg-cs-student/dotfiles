@@ -20,6 +20,7 @@ COLOR_GRAY='\e[38;5;246m'
 # use vi navigation rather than emacs
 set -o vi
 EDITOR=nvim
+VISUAL=nvim
 
 # add git to prompt
 parse_git_branch () {

@@ -22,6 +22,13 @@ set autoindent
 set ignorecase smartcase
 set cb=unnamedplus	" integrates system clipboard with yank and put
 
+" Markdown
+au Filetype markdown set wrap
+au Filetype markdown set spell
+au Filetype markdown set textwidth=80  " line wraps at 80 char
+au Filetype markdown set noexpandtab
+
+
 " The following lines customize the status bar at the bottom of the screen
 " https://shapeshed.com/vim-statuslines/
 function! GitBranch()

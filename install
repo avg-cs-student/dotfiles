@@ -12,6 +12,10 @@ if ! command -v nvim &> /dev/null; then
 	needed+=("nvim")
 fi
 
+if ! command -v pandoc &> /dev/null; then
+	needed+=("pandoc")
+fi
+
 if ! command -v tmux &> /dev/null; then
 	needed+=("tmux")
 fi
