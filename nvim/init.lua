@@ -1,26 +1,27 @@
 require('plugins')
-require('config')
 require('remap')
+require('lsp.config')
+require('utils')
 
 -- 	Visual
 vim.cmd.colorscheme('papercolor')
-vim.opt.background 	= "dark"
-vim.opt.scrolloff 	= 3	-- keep 3 lines visible when scrolling
+vim.opt.background 		= "dark"
+vim.opt.scrolloff 		= 3	-- keep 3 lines visible when scrolling
 vim.opt.sidescrolloff 	= 7	-- same as above except for side scrolling
 vim.opt.colorcolumn 	= "80"
-vim.opt.number 		= true
+vim.opt.number 			= true
 vim.opt.relativenumber	= true
-vim.opt.wrap 		= false
-vim.opt.ruler 		= true
-vim.opt.visualbell	= true	-- no annoying sounds
-vim.opt.hidden		= true	-- save buffer information when it's not in view
-vim.opt.showcmd		= true	-- show current command in status
-vim.opt.wildmenu	= true
-vim.opt.smartindent	= true
-vim.opt.smarttab	= true
-vim.opt.autoindent	= true
-vim.opt.ignorecase	= true
-vim.opt.clipboard	= "unnamedplus"	-- integrates system clipboard
+vim.opt.wrap 			= false
+vim.opt.ruler 			= true
+vim.opt.visualbell		= true	-- no annoying sounds
+vim.opt.hidden			= true	-- save buffer information when it's not in view
+vim.opt.showcmd			= true	-- show current command in status
+vim.opt.wildmenu		= true
+vim.opt.smartindent		= true
+vim.opt.smarttab		= true
+vim.opt.autoindent		= true
+vim.opt.ignorecase		= true
+vim.opt.clipboard		= "unnamedplus"	-- integrates system clipboard
 
 -- 	Markdown
 vim.cmd([[
@@ -31,9 +32,10 @@ vim.cmd([[
 ]])
 
 
---[ 	The following lines customize the status bar at the bottom of the screen
+--[[ 	
+--	The following lines customize the status bar at the bottom of the screen
 --	ref: https://shapeshed.com/vim-statuslines/
---]	
+--]]
 
 vim.cmd([[
 	function! GitBranch()
@@ -60,10 +62,10 @@ vim.cmd([[
 	set statusline+=%#ReplaceColor#%{(mode()=='R')?'\ \ REPLACE\ ':''}
 	set statusline+=%#VisualColor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
 	set statusline+=%#StatusLineNc#
-	set statusline+=\ %f
-	set statusline+=%m\ 
+	set statusline+=\ \ \ \ \ \ \ %r\ %f 
+	set statusline+=\ \ \ \ \ \ \ \ 
 	set statusline+=%#GitColor#
-	set statusline+=%{StatuslineGit()} 
+	set statusline+=%m\ %{StatuslineGit()}\  
 	set statusline+=%#StatusLineNc#
 	set statusline+=%=
 	set statusline+=\ %y

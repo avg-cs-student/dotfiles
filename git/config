@@ -25,11 +25,11 @@
 	changed		= yellow	bold
 	untracked	= red		bold
 [diff]
-	tool		= vimdiff
+	tool		= nvimdiff
 [difftool]
 	prompt		= false
 [merge]
-	tool 		= nvim -d
+	tool 		= nvimdiff
 [alias]
 	hist		= log --all --graph --decorate --oneline
 	c		= commit
