@@ -12,6 +12,10 @@ if ! command -v nvim &> /dev/null; then
 	needed+=("nvim")
 fi
 
+if ! command -v batcat &> /dev/null; then
+	needed+=("batcat")
+fi
+
 if ! command -v pandoc &> /dev/null; then
 	needed+=("pandoc")
 fi
