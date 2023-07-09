@@ -4,13 +4,15 @@
 
 local lspconfig = require('lspconfig')
 local servers = {
-				lua_ls = require('lsp.servers.lua_ls'),
-				clangd = require('lsp.servers.clangd'),
+	clangd = require('lsp.servers.clangd'),
+	lua_ls = require('lsp.servers.lua_ls'),
+	pylsp = require('lsp.servers.pylsp'),
+	texlab = require('lsp.servers.texlab'),
 }
 
 for server, opts in pairs(servers) do
-				lspconfig[server].setup {
-								on_attach = opts.on_attach,
-								settings = opts.settings,
-				}
+	lspconfig[server].setup {
+		on_attach = opts.on_attach,
+		settings = opts.settings,
+	}
 end

@@ -59,10 +59,12 @@ elif command -v bat &> /dev/null; then
 	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
-# MSP430 compiler and debugger at home
+# Embedded development at home
 if [[ "$(hostname)" == "sys76" ]]; then
 	PATH="$HOME/Development/PERSIST/toolchain/ti/msp430-gcc/bin:$PATH";
 	PATH="$HOME/Development/PERSIST/toolchain/mspdebug:$PATH";
+	PATH="$HOME/tools/lua-language-server/bin/:$PATH";
+	PATH="$HOME/tools/:$PATH";
 fi
 
 # History
@@ -89,4 +91,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias luamake=/home/justincromer/tools/lua-language-server/3rd/luamake/luamake

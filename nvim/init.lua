@@ -22,13 +22,23 @@ vim.opt.smarttab		= true
 vim.opt.autoindent		= true
 vim.opt.ignorecase		= true
 vim.opt.clipboard		= "unnamedplus"	-- integrates system clipboard
+vim.opt.breakindent = true
+vim.o.completeopt	= 'menuone,noselect'
 
 -- 	Markdown
 vim.cmd([[
 	au Filetype markdown set wrap
 	au Filetype markdown set spell
-	au Filetype markdown set textwidth=80  -- line wraps at 80 char
+	au Filetype markdown set textwidth=80
 	au Filetype markdown set noexpandtab
+]])
+
+-- Latex
+vim.cmd([[
+	au Filetype tex set wrap
+	au Filetype tex set spell
+	au Filetype tex set textwidth=80
+	au Filetype tex set noexpandtab
 ]])
 
 

@@ -2,7 +2,10 @@
 local M = {}
 local common = require('lsp.servers.common')
 
-M.on_attach = common.on_attach(2)
+local opts = {}
+opts.tabsize = 2
+
+M.on_attach = common.on_attach(opts)
 M.settings = {
 	Lua = {
 		completion = { enable = true, callSnippet = "Both" },

@@ -1,8 +1,9 @@
 local M = {}
 
-local tabsize = 4
+local opts = {}
+opts.tabsize = 4
 
-M.on_attach = require('lsp.servers.common').on_attach(tabsize)
+M.on_attach = require('lsp.servers.common').on_attach(opts)
 M.root_dir = require('lspconfig').util.root_pattern(
   '.clangd',
   '.clang-tidy',
