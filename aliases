@@ -9,9 +9,10 @@ alias mv='mv -i'
 alias cp='cp -i'
 
 # most frequently used
-alias l='ls -CF'
-alias la='ls -Ah'
-alias ll='ls -laF'
+alias l='exa'
+alias la='exa -Ah'
+alias ll='exa -laF'
+alias lt='exa -T'
 alias df='df -h'
 alias mkdir='mkdir -p'
 alias bat='batcat'

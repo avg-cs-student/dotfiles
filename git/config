@@ -31,9 +31,12 @@
 [merge]
 	tool 		= nvimdiff
 [alias]
-	hist		= log --all --graph --decorate --oneline
+	hist	= log --all --graph --decorate --oneline
+    last    = log -1 HEAD
+	co		= !git checkout $(git branch | fzf)
 	c		= commit
 	ca		= commit -a
 	s		= status
+	su		= status --untracked-files=no
 	cb		= checkout -b
 	bl		= branch -l

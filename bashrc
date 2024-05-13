@@ -65,6 +65,7 @@ if [[ "$(hostname)" == "sys76" ]]; then
 	PATH="$HOME/Development/PERSIST/toolchain/mspdebug:$PATH";
 	PATH="$HOME/tools/lua-language-server/bin/:$PATH";
 	PATH="$HOME/tools/:$PATH";
+	PATH="/usr/local/texlive/2023/bin/x86_64-linux/:$PATH";
 fi
 
 # History
@@ -91,3 +92,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
