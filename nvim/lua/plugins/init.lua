@@ -6,13 +6,6 @@ return {
 			'hrsh7th/cmp-nvim-lsp',
 		},
 	},
-
-	-- LSP Servers
-	{ 'tsserver' },
-	{ 'rust-analyzer' },
-
-	-- Colors
-	{ 'EdenEast/nightfox.nvim' },
 	{
 		-- LSP Configuration and Plugins
 		'neovim/nvim-lspconfig',
@@ -23,7 +16,7 @@ return {
 
 			-- Useful status updates for LSP
 			-- Note: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ 'j-hu/fidget.nvim',        tag = 'legacy', opts = {} },
+			{ 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
 			-- Additional lua configuration
 			'folke/neodev.nvim',
@@ -32,6 +25,10 @@ return {
 	{
 		'nvim-telescope/telescope.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' },
+	},
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 	},
 	{
 		-- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -54,18 +51,15 @@ return {
 			},
 			auto_attach                       = true,
 			attach_to_untracked               = false,
-			current_line_blame                = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+			current_line_blame                = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
 			current_line_blame_opts           = {
-				virt_text = true,
+				virt_text = false,
 				virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
 				delay = 1000,
 				ignore_whitespace = false,
 				virt_text_priority = 100,
 			},
 			current_line_blame_formatter      = '<author>, <author_time:%Y-%m-%d> - <summary>',
-			current_line_blame_formatter_opts = {
-				relative_time = false,
-			},
 			sign_priority                     = 6,
 			update_debounce                   = 100,
 			status_formatter                  = nil, -- Use default
@@ -82,9 +76,11 @@ return {
 				vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
 					{ buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
 				vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk,
-					{ buffer = bufnr, desc = '[G]o to [N]revious Hunk' })
+					{ buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
 				vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk,
 					{ buffer = bufnr, desc = '[P]review [H]unk' })
+				vim.keymap.set('n', '<leader>b', require('gitsigns').toggle_current_line_blame,
+					{ buffer = bufnr, value = nil, desc = 'Toggle [B]lame' })
 			end,
 		},
 	},

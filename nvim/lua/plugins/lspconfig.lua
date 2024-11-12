@@ -11,7 +11,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 		vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 		vim.keymap.set('n', '<leader>f', function()
 			vim.lsp.buf.format { async = true }
 		end, opts)
@@ -32,7 +31,7 @@ return {
 		{ 'williamboman/mason.nvim', config = true },
 		'williamboman/mason-lspconfig.nvim',
 		'hrsh7th/cmp-nvim-lsp',
-		{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+		{ 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 		'folke/neodev.nvim',
 
 	},
@@ -46,14 +45,11 @@ return {
 		require('mason').setup()
 		require('mason-lspconfig').setup({
 			ensure_installed = {
-				'bashls',
-				'bzl',
 				'clangd',
 				'dockerls',
+				'gopls',
 				'lua_ls',
 				'rust_analyzer',
-				'tsserver',
-				'yamlls'
 			},
 			handlers = {
 				-- Optional default handler
@@ -62,7 +58,13 @@ return {
 						capabilities = capabilities
 					})
 				end, -- end default
-
+				['clangd'] = function()
+					local lspconfig = require('lspconfig')
+					lspconfig.clangd.setup({
+						capabilities = capabilities,
+						filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "hpp" },
+					})
+				end,
 				['lua_ls'] = function()
 					local lspconfig = require('lspconfig')
 					lspconfig.lua_ls.setup({
@@ -76,7 +78,7 @@ return {
 										'it',
 										'describe',
 										'before_each',
-										'after_each' 
+										'after_each'
 									}
 								}
 							}
@@ -102,10 +104,11 @@ return {
 							}
 						}
 					})
-				end, 
+				end,
 			}
 		})
 		vim.diagnostic.config({
+			virtual_text = false,
 			float = {
 				focusable = false,
 				style = 'minimal',

@@ -45,3 +45,4 @@ vim.keymap.set('n', '<leader>/', function()
 end, {})
 
 require('config.options')
+require('config.keymap')
