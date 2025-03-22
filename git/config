@@ -1,6 +1,6 @@
 [user]
 	name 		= Justin Cromer
-	email 		= justincromer@protonmail.com
+	email 		= justincromer@gmail.com
 [credential "https://github.com"]
 	username 	= avg-cs-student
 [init]
@@ -17,19 +17,13 @@
 [color "diff"]
 	meta		= yellow	bold
 	frag		= magenta	bold
-	old		= red		bold
-	new		= green		bold
+	old		    = red		bold
+	new		    = green		bold
 	whitespace	= red		reverse
 [color "status"]
 	added		= green		bold
 	changed		= yellow	bold
 	untracked	= red		bold
-[diff]
-	tool		= nvimdiff
-[difftool]
-	prompt		= false
-[merge]
-	tool 		= nvimdiff
 [alias]
 	hist	= log --all --graph --decorate --oneline
     last    = log -1 HEAD

@@ -1,0 +1,49 @@
+# ================  IMAP ====================
+set imap_user = 'justincromer@gmail.com'
+set spoolfile = imaps://imap.gmail.com/INBOX
+set folder = imaps://imap.gmail.com/
+set record="imaps://imap.gmail.com/[Gmail]/Sent Mail"
+set postponed="imaps://imap.gmail.com/[Gmail]/Drafts"
+set mbox="imaps://imap.gmail.com/[Gmail]/All Mail"
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+set imap_authenticators="oauthbearer"
+set imap_oauth_refresh_command="~/.mutt/oauth2.py ~/.mutt/tokens/justincromer@gmail.com.tokens"
+
+# ================  SMTP  ====================
+set smtp_url="smtps://justincromer@smtp.gmail.com:465/"
+set smtp_authenticators="oauthbearer"
+set smtp_oauth_refresh_command="~/.mutt/oauth2.py ~/.mutt/tokens/justincromer@gmail.com.tokens"
+
+# ================  Composition  ====================
+set editor = "nvim"
+set edit_headers = yes  # See the headers when editing
+set charset = UTF-8     # value of $LANG; also fallback for send_charset
+
+# Sender, email address, and sign-off line must match
+unset use_domain        # because joe@localhost is just embarrassing
+unset record		    # gmail auto saves set email to [Gmail]/Sent
+set realname='Justin Cromer'
+set from = 'justincromer@gmail.com'
+set use_from = yes
+
+# ================  Experimental  ====================
+set attribution="* %n <%a> [%(%m/%d/%y %H:%M)]:"
+set include 	# include mail as quoted text in replies
+set recall=no	# do not prompt for recalling postponed mails with 'm'
+set tilde	    # non-existant lines of text with a tilde at start
+set save_name
+set reverse_name
+
+# You've got mail
+set mail_check=60
+set timeout=5	# Update often when inactive
+bind index G imap-fetch-mail
+
+# Gmail-style keyboard shortcuts
+macro index,pager ga "<change-folder>=[Gmail]/All<tab><enter>" "Go to all mail"
+macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
+macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+macro index,pager e "<enter-command>unset trash\n <delete-message>" "Gmail archive message" # different from Gmail, but wanted to keep "y" to show folders.

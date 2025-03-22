@@ -31,18 +31,15 @@ return {
 	dependencies = {
 		{ 'williamboman/mason.nvim', config = true },
 		'williamboman/mason-lspconfig.nvim',
-		'hrsh7th/cmp-nvim-lsp',
 		{ 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 		'folke/neodev.nvim',
 
 	},
 	config = function()
-		local cmp_lsp = require('cmp_nvim_lsp')
 		local capabilities = vim.tbl_deep_extend(
 			'force',
 			{},
-			vim.lsp.protocol.make_client_capabilities(),
-			cmp_lsp.default_capabilities())
+			vim.lsp.protocol.make_client_capabilities())
 		require('mason').setup()
 		require('mason-lspconfig').setup({
 			handlers = {

@@ -16,4 +16,3 @@ opt.splitbelow     = true
 opt.termguicolors  = true
 opt.colorcolumn    = '80'
 opt.signcolumn     = 'yes'
-opt.background     = 'dark'
