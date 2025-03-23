@@ -8,25 +8,22 @@ d="\e[39m\e[0m"
 
 echo -e "Checking for dependencies..."
 declare -a needed
-if ! command -v nvim &> /dev/null; then
-	needed+=("nvim")
-fi
 
-if ! command -v batcat &> /dev/null; then
-	needed+=("batcat")
-fi
+# Expected cli tools
+declare -A expected
+expected+=( \
+	[fzf]="fzf" \
+	[mutt]="mutt" \
+	[nvim]="nvim" \
+	[rg]="ripgrep" \
+	[tree]="tree" \
+)
 
-if ! command -v pandoc &> /dev/null; then
-	needed+=("pandoc")
-fi
-
-if ! command -v tmux &> /dev/null; then
-	needed+=("tmux")
-fi
-
-if ! command -v git &> /dev/null; then
-	needed+=("git")
-fi
+for prog in ${!expected[@]}; do
+	if ! command -v "$prog" &> /dev/null; then
+		needed+=( ${expected["$prog"]} )
+	fi
+done
 
 if [ ${#needed[@]} -ne 0 ]; then
 	echo -e "\nBefore proceeding with this script, please install the following dependencies:"
@@ -58,7 +55,7 @@ fi
 
 echo -e "\nRemoving existing files/directories..."
 echo -e "--------------------------------------"
-rm -vrf ~/.bash_aliases ~/.bashrc ~/.tmux.conf ~/.config/git ~/.config/nvim ~/.config/gnu-readline.conf
+rm -vrf ~/.bash_aliases ~/.bashrc ~/.tmux.conf ~/.config/git ~/.config/nvim ~/.config/gnu-readline.conf ~/.config/mutt
 echo -e "\nConfiguring symlinks"
 echo -e "--------------------"
 
@@ -70,6 +67,7 @@ ln -sv ${PWD}/gnu-readline.conf ~/.config/gnu-readline.conf
 
 # Directories
 ln -sv -t ~/.config/ ${PWD}/git
+ln -sv -t ~/.config/ ${PWD}/mutt
 ln -sv -t ~/.config/ ${PWD}/nvim
 
 echo -e "\n${g}Complete.${d}"

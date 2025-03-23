@@ -3,20 +3,18 @@
 # pipe to system clipboard for ctrl-v use
 alias xsc='xclip -selection c'
 
-# avoid bad things while learning kenesis keyboard
+# avoid bad things
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
 # most frequently used
-alias l='exa'
-alias la='exa -Ah'
-alias ll='exa -laF'
-alias lt='exa -T'
+alias l='ls'
+alias la='ls -Ah'
+alias ll='ls -laF'
+alias lt='tree'
 alias df='df -h'
 alias mkdir='mkdir -p'
-alias bat='batcat'
-alias cat='batcat --paging=never'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -34,31 +32,7 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# use neovim if we can
-if command -v nvim &> /dev/null; then
-	alias v='nvim'
-	alias vi='nvim'
-	alias vim='nvim'
-else
-	alias v='vim'
-	alias vi='vim'
-fi
-
-# ESP32 development
-alias get_idf=". $HOME/Development/esp32/esp-idf/export.sh"
-
 # mkdir && cd to that dir
 mcd () {
 	mkdir -p $1 && cd $_
-}
-
-# jump to dir containing file, handy with fzf
-jump () {
-	cd "$(dirname ${1})"
-}
-
-# convert markdown to pdf quickly
-makepdf () {
-	local new_name=$(echo $1 | sed 's/.md$/.pdf/')
-	pandoc -t pdf -o $new_name $1
 }

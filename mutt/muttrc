@@ -9,12 +9,12 @@ set header_cache = "~/.mutt/cache/headers"
 set message_cachedir = "~/.mutt/cache/bodies"
 set certificate_file = "~/.mutt/certificates"
 set imap_authenticators="oauthbearer"
-set imap_oauth_refresh_command="~/.mutt/oauth2.py ~/.mutt/tokens/justincromer@gmail.com.tokens"
+set imap_oauth_refresh_command="~/.config/mutt/oauth2.py ~/.config/mutt/tokens/justincromer@gmail.com.tokens"
 
 # ================  SMTP  ====================
 set smtp_url="smtps://justincromer@smtp.gmail.com:465/"
 set smtp_authenticators="oauthbearer"
-set smtp_oauth_refresh_command="~/.mutt/oauth2.py ~/.mutt/tokens/justincromer@gmail.com.tokens"
+set smtp_oauth_refresh_command="~/.config/mutt/oauth2.py ~/.config/mutt/tokens/justincromer@gmail.com.tokens"
 
 # ================  Composition  ====================
 set editor = "nvim"
