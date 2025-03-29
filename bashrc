@@ -6,7 +6,16 @@ case $- in
       *) return;;
 esac
 
-[ "$PS1" = "\\s-\\v\\\$ " ] && PS1="[\u@\h \W]\\$ "
+add_to_path() {
+	if ! echo "$PATH" | grep -q ":$1:"; then
+		export PATH="$PATH:$1"
+	fi
+}
+
+
+source ~/.config/git/prompt.sh
+
+PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 # use vi navigation rather than emacs
 set -o vi
@@ -14,6 +23,9 @@ EDITOR=nvim
 VISUAL=nvim
 
 export XDG_CONFIG_HOME=~/.config
+
+# Some distros do not include this directory by default.
+add_to_path ~/.local/bin
 
 if [ -L ~/.bash_aliases ]; then
 	source ~/.bash_aliases
@@ -38,3 +50,4 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+. "$HOME/.cargo/env"
