@@ -1,0 +1,6 @@
+[alias]
+d = "doc"
+dp = "doc --document-private-items"
+da = "doc --all-features"
+dpa = "doc --all-features --document-private-items"
+dap = "doc --all-features --document-private-items"

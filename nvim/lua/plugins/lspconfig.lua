@@ -1,3 +1,5 @@
+-- LSP Setup
+
 -- Use LspAttach autocmd to only map the following keys
 -- after the language server attaches to the current buffer.
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -34,12 +36,18 @@ return {
 		{ 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 		'folke/neodev.nvim',
 
+		-- Add completion features
+		'hrsh7th/nvim-cmp',
+		'hrsh7th/cmp-nvim-lsp',
 	},
 	config = function()
-		local capabilities = vim.tbl_deep_extend(
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = vim.tbl_deep_extend(
 			'force',
-			{},
-			vim.lsp.protocol.make_client_capabilities())
+			capabilities,
+			require('cmp_nvim_lsp').default_capabilities()
+		)
+
 		require('mason').setup()
 		require('mason-lspconfig').setup({
 			handlers = {
@@ -70,6 +78,7 @@ return {
 						}
 					})
 					lspconfig.rust_analyzer.setup({
+						capabilities = capabilities,
 						settings = {
 							['rust_analyzer'] = {
 								imports = {

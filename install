@@ -63,13 +63,12 @@ echo -e "--------------------"
 # Some distros do not ship with ~/.local/bin
 mkdir -p ~/.local/bin
 
-# Files
+# Config
 ln -sv ${PWD}/aliases ~/.bash_aliases
 ln -sv ${PWD}/bashrc ~/.bashrc
 ln -sv ${PWD}/tmux.conf ~/.tmux.conf
 ln -sv ${PWD}/gnu-readline.conf ~/.config/gnu-readline.conf
-
-# Directories
+ln -sv ${PWD}/cargo_config ~/.cargo/config
 ln -sv -t ~/.config/ ${PWD}/git
 ln -sv -t ~/.config/ ${PWD}/mutt
 ln -sv -t ~/.config/ ${PWD}/nvim
