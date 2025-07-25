@@ -7,6 +7,7 @@ return {
   config = function()
     -- :help telescope.builtin
     local builtin = require('telescope.builtin')
+    local themes = require('telescope.themes')
     require('telescope').setup({
       defaults = {
         mappings = {
@@ -22,6 +23,27 @@ return {
       extensions = {
         file_browser = {
           dir_icon = "🗀",
+          theme = "ivy",
+        },
+      },
+      pickers = {
+        find_files = {
+          theme = "ivy",
+        },
+        git_files = {
+          theme = "ivy",
+        },
+        help_tags = {
+          theme = "ivy",
+        },
+        oldfiles = {
+          theme = "ivy",
+        },
+        live_grep = {
+          theme = "ivy",
+        },
+        buffers = {
+          theme = "ivy",
         },
       },
     })

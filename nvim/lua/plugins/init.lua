@@ -6,12 +6,12 @@ return {
 			return vim.fn.executable 'make' == 1
 		end,
 	},
-	-- 'gc' to comment visual regions/lines
+	-- 'gc' to comment visual regions/lines.
 	{ 'numToStr/Comment.nvim', opts = {} },
 	-- git
 	'tpope/vim-fugitive',
-	-- automatic shiftwidth detection
+	-- Automatic shiftwidth detection.
 	'tpope/vim-sleuth',
-	-- asynchronus runner, auto populates qf list
+	-- Asynchronus runner, auto populates qf list.
 	'tpope/vim-dispatch',
 }
