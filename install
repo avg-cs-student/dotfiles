@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/opt/homebrew/bin/bash
 
 # Colors
 g="\e[32m"
@@ -14,7 +14,6 @@ declare -A expected
 expected+=( \
 	[fd]="fd" \
 	[fzf]="fzf" \
-	[mutt]="mutt" \
 	[nvim]="nvim" \
 	[rg]="ripgrep" \
 	[tree]="tree" \
@@ -56,7 +55,7 @@ fi
 
 echo -e "\nRemoving existing files/directories..."
 echo -e "--------------------------------------"
-rm -vrf ~/.bash_aliases ~/.bashrc ~/.tmux.conf ~/.config/git ~/.config/nvim ~/.config/gnu-readline.conf ~/.config/mutt
+rm -vrf ~/.bash_aliases ~/.bashrc ~/.tmux.conf ~/.config/git ~/.config/nvim ~/.config/gnu-readline.conf
 echo -e "\nConfiguring symlinks"
 echo -e "--------------------"
 
@@ -69,9 +68,8 @@ ln -sv ${PWD}/bashrc ~/.bashrc
 ln -sv ${PWD}/tmux.conf ~/.tmux.conf
 ln -sv ${PWD}/gnu-readline.conf ~/.config/gnu-readline.conf
 ln -sv ${PWD}/cargo_config ~/.cargo/config
-ln -sv -t ~/.config/ ${PWD}/git
-ln -sv -t ~/.config/ ${PWD}/mutt
-ln -sv -t ~/.config/ ${PWD}/nvim
+ln -sv ~/.config/ ${PWD}/git
+ln -sv ~/.config/ ${PWD}/nvim
 
 # Executables
 ln -sv ${PWD}/tmux-sessionizer ~/.local/bin/tmux-sessionizer

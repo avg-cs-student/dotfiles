@@ -41,3 +41,10 @@ key.set("n", "<leader>fl", ":Telescope file_browser path=%:p:h select_buffer=tru
 
 -- Diagnostic keymaps
 key.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Quickly toggle hlsearch
+key.set('n', '<leader>hl', function() 
+	vim.o.hlsearch = not vim.o.hlsearch
+end, 
+	{ desc = 'Toggle hilighting on search'}
+)

@@ -15,9 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-	-- Evaluate everything in our nvim/lua/plugins/ directory.
 	spec = { import = 'plugins' },
-	-- Just use unicode instead of bothering with NerdFonts
 	ui = {
 		icons = {
 			cmd = '⌘',

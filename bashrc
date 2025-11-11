@@ -72,3 +72,5 @@ eval "$(pyenv init - bash)"
 eval "$(pyenv virtualenv-init -)"
 
 [ -f "/home/justincromer/.ghcup/env" ] && . "/home/justincromer/.ghcup/env" # ghcup-envsource ~/.bash_completion/alacritty
+
+. "$HOME/.local/bin/env"

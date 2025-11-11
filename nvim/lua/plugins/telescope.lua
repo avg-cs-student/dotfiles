@@ -22,7 +22,9 @@ return {
       },
       extensions = {
         file_browser = {
-          dir_icon = "🗀",
+          dir_icon = "📁",
+          grouped = true,
+          hidden = true,
           theme = "ivy",
         },
       },

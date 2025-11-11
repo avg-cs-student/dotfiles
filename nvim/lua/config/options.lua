@@ -1,29 +1,27 @@
-local opt       = vim.opt
+local opt         = vim.opt
 
 -- Indentation
-opt.shiftwidth  = 4
-opt.softtabstop = 4
-opt.tabstop     = 4
-opt.expandtab   = true
-opt.smartindent = true
-opt.breakindent = true
+opt.shiftwidth    = 4
+opt.softtabstop   = 4
+opt.tabstop       = 4
+opt.expandtab     = true
+opt.smartindent   = true
+opt.breakindent   = true
 
 -- Appearance
-opt.number         = true
-opt.relativenumber = true
-opt.splitright     = true
-opt.splitbelow     = true
-opt.termguicolors  = true
-opt.colorcolumn    = '80'
-opt.cursorline     = true
-opt.signcolumn     = 'yes'
-opt.background     = 'dark'
+opt.number        = true
+opt.splitright    = true
+opt.splitbelow    = true
+opt.termguicolors = true
+opt.cursorline    = true
+opt.signcolumn    = 'yes'
+opt.background    = 'dark'
 
 -- Search
-opt.ignorecase     = true
-opt.incsearch      = true
-opt.smartcase      = true
-opt.hlsearch       = false
+opt.ignorecase    = true
+opt.incsearch     = true
+opt.smartcase     = true
+opt.hlsearch      = true
 opt.path:append('**')
 
 -- Highlight on yank (:help vim.highlight.on_yank())
