@@ -6,3 +6,5 @@ opt.softtabstop = 4
 opt.tabstop     = 4
 opt.expandtab   = true
 opt.colorcolumn = '100'
+opt.autoindent  = true
+opt.smartindent = true

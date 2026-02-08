@@ -8,14 +8,7 @@ vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 
 require('config')
-vim.cmd.colorscheme('default')
-
--- quickly update nvim
-vim.keymap.set('n', '<leader>ev', '<cmd>tabnew $MYVIMRC<cr>')
-vim.keymap.set('n', '<leader>sv', '<cmd>source $MYVIMRC<cr>')
-
-vim.keymap.set('n', '<leader>l', '<C-^>')
-vim.keymap.set('n', '<leader>tn', '<cmd>tabnew<cr>')
+vim.cmd.colorscheme('gruber-darker')
 
 -- LSP
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -47,4 +40,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.lsp.enable({
 	"clangd",
 	"lua_ls",
+	"rust_analyzer",
+	"ty",
 })

@@ -23,6 +23,22 @@ vim.diagnostic.config {
 	},
 }
 
+-- quickly update nvim
+vim.keymap.set('n', '<leader>ev', '<cmd>tabnew $MYVIMRC<cr>')
+vim.keymap.set('n', '<leader>sv', '<cmd>source $MYVIMRC<cr>')
+
+-- hop to previous buffer
+vim.keymap.set('n', '<leader>l', '<C-^>')
+
+-- tabs
+vim.keymap.set('n', '<leader>tn', '<cmd>tabnew<cr>')
+key.set('n', '<leader>0', ':0tabn<CR>', { desc = 'Go to Tab 0.' })
+key.set('n', '<leader>1', ':1tabn<CR>', { desc = 'Go to Tab 1.' })
+key.set('n', '<leader>2', ':2tabn<CR>', { desc = 'Go to Tab 2.' })
+key.set('n', '<leader>3', ':3tabn<CR>', { desc = 'Go to Tab 3.' })
+key.set('n', '<leader>4', ':4tabn<CR>', { desc = 'Go to Tab 4.' })
+key.set('n', '<leader>5', ':5tabn<CR>', { desc = 'Go to Tab 5.' })
+
 -- diagnostics
 key.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message.' })
 key.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message.' })
@@ -43,8 +59,8 @@ key.set("n", "<leader>fl", ":Telescope file_browser path=%:p:h select_buffer=tru
 key.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Quickly toggle hlsearch
-key.set('n', '<leader>hl', function() 
-	vim.o.hlsearch = not vim.o.hlsearch
-end, 
-	{ desc = 'Toggle hilighting on search'}
+key.set('n', '<leader>hl', function()
+		vim.o.hlsearch = not vim.o.hlsearch
+	end,
+	{ desc = 'Toggle hilighting on search' }
 )

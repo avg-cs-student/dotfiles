@@ -6,6 +6,7 @@ return {
 			return vim.fn.executable 'make' == 1
 		end,
 	},
+	{ "blazkowolf/gruber-darker.nvim" },
 	-- 'gc' to comment visual regions/lines.
 	{ 'numToStr/Comment.nvim',   opts = {} },
 	-- git
